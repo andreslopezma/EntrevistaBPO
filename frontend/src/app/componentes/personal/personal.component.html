@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col s4">
+        <div class="card-panel">
+            <form #personalForm="ngForm" (ngSubmit)="agregarEmpleado(personalForm)">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input placeholder="Nombre Completos" id="nombres1" name="nombres" #name="ngModel" [(ngModel)]="personalService.personalSelecionado.Nombres" type="text">
+                            <label for="nombres1">Nombres Completos</label>
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Documento" id="documento" name="documento" #documento="ngModel" [(ngModel)]="personalService.personalSelecionado.Documento" type="text">
+                            <label for="documento">Documento</label>
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Fecha de Incio" name="fechaInicio" #fechaInicio="ngModel" [(ngModel)]="personalService.personalSelecionado.fechaInicio" type="text" class="datepicker">
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Fecha Fin" name="fechaFin" #fechaFin="ngModel" [(ngModel)]="personalService.personalSelecionado.fechaFin" type="text" class="datepicker">
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Hora Inicio" name="horaInicio" #horaInicio="ngModel" [(ngModel)]="personalService.personalSelecionado.fechaInicioTurno" type="text" class="timepicker">
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Hora Fin" name="horaFin" #horaFin="ngModel" [(ngModel)]="personalService.personalSelecionado.fechaFinTurno" type="text" class="timepicker">
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Hora Inicio Extra" name="horaInicioExtra" #horaInicioExtra="ngModel" [(ngModel)]="personalService.personalSelecionado.fechaInicioExtra" type="text" class="timepicker">
+                        </div>
+                        <div class="input-field">
+                            <input placeholder="Hora Fin Extra" name="horFinExtra" #horFinExtra="ngModel" [(ngModel)]="personalService.personalSelecionado.fechaFinExtra" type="text" class="timepicker">
+                        </div>
+                        <div class="input-field">
+                            <textarea id="motivoExtra" class="materialize-textarea" name="motivoExtra" #motivoExtra="ngModel" [(ngModel)]="personalService.personalSelecionado.motivoExtra" data-length="120"></textarea>
+                            <label for="motivoExtra">Motivo Extra</label>
+                        </div>
+                        <div class="card-action">
+                            <div class="input field col s12">
+                                <button class="btn">save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col s8">
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Documento</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Hora Incio</th>
+                    <th>Hora Fin</th>
+                    <th>Hora Incio Extra</th>
+                    <th>Hora Fin Extra</th>
+                    <th>Motivo Extra</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let empleados of personalService.arrayEmpleados; let i=index">
+                    <td>{{ empleados.Nombres }}</td>
+                    <td>{{ empleados.Documento }}</td>
+                    <td>{{ empleados.fechaInicio }}</td>
+                    <td>{{ empleados.fechaFin }}</td>
+                    <td>{{ empleados.fechaInicioExtra }}</td>
+                    <td>{{ empleados.fechaFinExtra }}</td>
+                    <td>{{ empleados.motivoExtra }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col s12 m7">
+        <div *ngFor="let users of personalService.arrayFotos; let i=index" class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s4">
+                        <label><i class="material-icons" >accessibility</i> Nombre: </label>
+                        <label>{{ users.name }}</label>
+                    </div>
+                    <div class="col s4">
+                        <label><i class="material-icons" >account_circle</i>Nombre de Usuario: </label>
+                        <label>{{ users.username }}</label>
+                    </div>
+                    <div class="col s4">
+                        <label><i class="material-icons" >email</i> Email: </label>
+                        <label>{{ users.email }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s4">
+                        <label><i class="material-icons" >location_on</i>Calle: </label>
+                        <label>{{ users.address.street }}</label>
+                    </div>
+                    <div class="col s4">
+                        <label><i class="material-icons" >airline_seat_flat</i>Apartamento: </label>
+                        <label>{{ users.address.suite }}</label>
+                    </div>
+                    <div class="col s4">
+                        <label><i class="material-icons" >location_city</i>Ciudad: </label>
+                        <label>{{ users.address.city }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
